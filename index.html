@@ -1,104 +1,10 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Let's Make Games</title>
   <link rel="icon" href="bigger_rocket.png" type="image/png" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-image: url('https://cdn.discordapp.com/attachments/1362827246397821050/1371629425472307210/LMG_Rocket_Ship_Launch_V12.gif?ex=6893e472&is=689292f2&hm=c8e709e778d8442dd223525c014e46124a011df038ca4211ff289ddadb5b2ef8&');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      color: white;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.76);
-      z-index: -1;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 10px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    .totals {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-bottom: 30px;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    .game {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-
-    .game-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .game-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #333;
-    }
-
-    .game h2 {
-      font-size: 1.4em;
-      margin: 0;
-    }
-
-    .game a {
-      color: #66ccff;
-      text-decoration: none;
-    }
-
-    .game a:hover {
-      text-decoration: underline;
-    }
-
-    .stat {
-      font-size: 1em;
-      margin: 4px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
