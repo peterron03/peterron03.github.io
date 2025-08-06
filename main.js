@@ -17,7 +17,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits2'),
     favoritedCount: document.getElementById('placeFavorites2'),
     playing: document.getElementById('playerCount2'),
-    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
+    url: "https://www.roblox.com/games/112221376891112/Egg-Hunt-Obby",
   },
 
   "7595032117": {
@@ -25,7 +25,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits3'),
     favoritedCount: document.getElementById('placeFavorites3'),
     playing: document.getElementById('playerCount3'),
-    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
+    url: "https://www.roblox.com/games/101594057349002/True-or-False",
   },
 
   "3688802054": {
@@ -33,7 +33,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits4'),
     favoritedCount: document.getElementById('placeFavorites4'),
     playing: document.getElementById('playerCount4'),
-    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
+    url: "https://www.roblox.com/games/10018650748/Tennis-Serve-Simulator",
   }
 }
 
