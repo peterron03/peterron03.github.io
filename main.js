@@ -2,6 +2,7 @@ const combinedVisits = document.getElementById('combinedPlaceVisits');
 const combinedFavorites = document.getElementById('combinedPlaceFavorites');
 const combinedPlayers = document.getElementById('combinedPlayerCount');
 const refreshButton = document.getElementById('refreshButton');
+const loadingScreen = document.getElementById('loadingScreen');
 
 const gameLabels = {
   "6691764291": {
@@ -47,6 +48,10 @@ const labelNames = {
 function addCommas(number) {
   if (isNaN(number)) return number;
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function updatePlayerCountNew() {
@@ -105,6 +110,10 @@ async function updatePlayerCountNew() {
   combinedVisits.textContent = `${addCommas(combinedStats.visits)} visits`;
   combinedFavorites.textContent = `${addCommas(combinedStats.favoritedCount)} favorites`;
   combinedPlayers.textContent = `${addCommas(combinedStats.playing)} players`;
+
+  await sleep(500);
+
+  if (loadingScreen) loadingScreen.style.display = 'none';
 }
 
 refreshButton.addEventListener('click', updatePlayerCountNew);
