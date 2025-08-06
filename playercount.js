@@ -3,7 +3,7 @@ const refreshButton = document.getElementById('refreshButton');
 
 async function updatePlayerCount() {
   try {
-    const response = await fetch(`https://games.roblox.com/v1/games?universeIds=6691764291`);
+    const response = await fetch(`https://games.roproxy.com/v1/games?universeIds=6691764291`);
     const data = await response.json();
     const count = data.data[0].playing;
     playerCountText.textContent = `Current players: ${count}`;
