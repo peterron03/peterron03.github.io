@@ -5,7 +5,7 @@ const refreshButton = document.getElementById('refreshButton');
 
 const gameLabels = {
   "6691764291": {
-    name: document.getElementById('gameName'),
+    name: document.querySelector('#gameName a'),
     visits: document.getElementById('placeVisits'),
     favoritedCount: document.getElementById('placeFavorites'),
     playing: document.getElementById('playerCount'),
@@ -13,7 +13,7 @@ const gameLabels = {
   },
 
   "7254273783": {
-    name: document.getElementById('gameName2'),
+    name: document.querySelector('#gameName2 a'),
     visits: document.getElementById('placeVisits2'),
     favoritedCount: document.getElementById('placeFavorites2'),
     playing: document.getElementById('playerCount2'),
@@ -21,7 +21,7 @@ const gameLabels = {
   },
 
   "7595032117": {
-    name: document.getElementById('gameName3'),
+    name: document.querySelector('#gameName3 a'),
     visits: document.getElementById('placeVisits3'),
     favoritedCount: document.getElementById('placeFavorites3'),
     playing: document.getElementById('playerCount3'),
@@ -29,7 +29,7 @@ const gameLabels = {
   },
 
   "3688802054": {
-    name: document.getElementById('gameName4'),
+    name: document.querySelector('#gameName4 a'),
     visits: document.getElementById('placeVisits4'),
     favoritedCount: document.getElementById('placeFavorites4'),
     playing: document.getElementById('playerCount4'),
@@ -45,7 +45,7 @@ const labelNames = {
 }
 
 function addCommas(number) {
-  if (isNaN(number)) return number
+  if (isNaN(number)) return number;
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
@@ -58,30 +58,36 @@ async function updatePlayerCountNew() {
     visits: 0,
     favoritedCount: 0,
     playing: 0,
-  }
+  };
 
   for (const gameId in gameLabels) {
     if (gameLabels.hasOwnProperty(gameId)) {
       const labels = gameLabels[gameId];
-    
+
+      // Show loading for each stat
       for (const key in labels) {
-        if (labels.hasOwnProperty(key)) {
+        if (labels.hasOwnProperty(key) && key !== "url") {
           labels[key].textContent = "Loading...";
         }
       }
-      
+
       try {
         const response = await fetch(`https://games.roproxy.com/v1/games?universeIds=${gameId}`);
         const data = await response.json();
-  
-        for (const key in labels) {
-          if (key == "url") {
-            labels.name.href = labels.url;
-          } else if (labels.hasOwnProperty(key)) {
-            labels[key].textContent = `${addCommas(data.data[0][key])} ${labelNames[key]}`;
 
-            if (combinedStats.hasOwnProperty(key)) {
-              combinedStats[key] += Number(data.data[0][key]);
+        for (const key in labels) {
+          if (labels.hasOwnProperty(key) && key !== "url") {
+            if (key === "name") {
+              labels.name.textContent = data.data[0].name;
+              labels.name.href = labels.url;
+              labels.name.target = "_blank"; // open link in new tab
+            } else {
+              let val = data.data[0][key];
+              if (val === undefined || val === null) val = 0;
+              labels[key].textContent = `${addCommas(val)} ${labelNames[key]}`;
+              if (combinedStats.hasOwnProperty(key)) {
+                combinedStats[key] += Number(val);
+              }
             }
           }
         }
@@ -91,11 +97,12 @@ async function updatePlayerCountNew() {
     }
   }
 
-  combinedVisits.textContent = `${addCommas(Number(combinedStats.visits))} visits`;
-  combinedFavorites.textContent = `${addCommas(Number(combinedStats.favoritedCount))} favorites`;
-  combinedPlayers.textContent = `${addCommas(Number(combinedStats.playing))} players`;
+  combinedVisits.textContent = `${addCommas(combinedStats.visits)} visits`;
+  combinedFavorites.textContent = `${addCommas(combinedStats.favoritedCount)} favorites`;
+  combinedPlayers.textContent = `${addCommas(combinedStats.playing)} players`;
 }
 
 refreshButton.addEventListener('click', updatePlayerCountNew);
 
+// Run once on load
 updatePlayerCountNew();
