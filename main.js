@@ -18,17 +18,17 @@ const gameLabels = {
   },
 
   "7595032117": {
-    name: document.getElementById('gameName2'),
-    visits: document.getElementById('placeVisits2'),
-    favoritedCount: document.getElementById('placeFavorites2'),
-    playing: document.getElementById('playerCount2'),
+    name: document.getElementById('gameName3'),
+    visits: document.getElementById('placeVisits3'),
+    favoritedCount: document.getElementById('placeFavorites3'),
+    playing: document.getElementById('playerCount3'),
   },
 
   "3688802054": {
-    name: document.getElementById('gameName2'),
-    visits: document.getElementById('placeVisits2'),
-    favoritedCount: document.getElementById('placeFavorites2'),
-    playing: document.getElementById('playerCount2'),
+    name: document.getElementById('gameName4'),
+    visits: document.getElementById('placeVisits4'),
+    favoritedCount: document.getElementById('placeFavorites4'),
+    playing: document.getElementById('playerCount4'),
   }
 }
 
