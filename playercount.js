@@ -1,10 +1,54 @@
-const gameNameText = document.getElementById('gameName');
-const visitsText = document.getElementById('placeVisits');
-const favoritesText = document.getElementById('placeFavorites');
-const playerCountText = document.getElementById('playerCount');
-const refreshButton = document.getElementById('refreshButton');
+const gameLabels = {
+  "6691764291": {
+    name: document.getElementById('gameName'),
+    visits: document.getElementById('placeVisits'),
+    favoritedCount: document.getElementById('placeFavorites'),
+    playing: document.getElementById('playerCount'),
+  },
 
-async function updatePlayerCount() {
+  "7254273783": {
+    name: document.getElementById('gameName2'),
+    visits: document.getElementById('placeVisits2'),
+    favoritedCount: document.getElementById('placeFavorites2'),
+    playing: document.getElementById('playerCount2'),
+  }
+}
+
+const labelNames = {
+  name: "",
+  visits: "visits",
+  favoritedCount: "favorites",
+  playing: "players",
+}
+
+async function updatePlayerCountNew() {
+  for (const gameId in gameLabels) {
+    if (gameLabels.hasOwnProperty(gameId)) {
+      const labels = gameLabels[gameId];
+    
+      for (const key in labels) {
+        if (labels.hasOwnProperty(key)) {
+          labels[key].textContent = "Loading...";
+        }
+      }
+      
+      try {
+        const response = await fetch(`https://games.roproxy.com/v1/games?universeIds=${gameId}`);
+        const data = await response.json();
+  
+        for (const key in labels) {
+          if (labels.hasOwnProperty(key)) {
+            labels[key].textContent = `${data.data[0][key]} ${labelNames[key]}`;
+          }
+        }
+      } catch (error) {
+        labels.name.textContent = `Error: ${error.message}`;
+      }
+    }
+  }
+}
+
+/* async function updatePlayerCount() {
   gameNameText.textContent = "Loading...";
   playerCountText.textContent = "Loading...";
   visitsText.textContent = "Loading...";
@@ -24,8 +68,8 @@ async function updatePlayerCount() {
     playerCountText.textContent = `Error: ${error.message}`;
     console.error(error);
   }
-}
+} */
 
-refreshButton.addEventListener('click', updatePlayerCount);
+refreshButton.addEventListener('click', updatePlayerCountNew);
 
-updatePlayerCount();
+updatePlayerCountNew();
