@@ -79,9 +79,9 @@ async function updatePlayerCountNew() {
     }
   }
 
-  combinedVisits.textContent = combinedStats.visits;
-  combinedFavorites.textContent = combinedStats.favoritedCount;
-  combinedPlayers.textContent = combinedStats.playing;
+  combinedVisits.textContent = `${combinedStats.visits} visits`;
+  combinedFavorites.textContent = `${combinedStats.favoritedCount} favorites`;
+  combinedPlayers.textContent = `${combinedStats.playing} players`;
 }
 
 /* async function updatePlayerCount() {
