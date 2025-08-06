@@ -9,7 +9,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits'),
     favoritedCount: document.getElementById('placeFavorites'),
     playing: document.getElementById('playerCount'),
-    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
+    icon: document.getElementById('gameIcon'),
   },
 
   "7254273783": {
@@ -17,7 +17,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits2'),
     favoritedCount: document.getElementById('placeFavorites2'),
     playing: document.getElementById('playerCount2'),
-    url: "https://www.roblox.com/games/112221376891112/Egg-Hunt-Obby",
+    icon: document.getElementById('gameIcon2'),
   },
 
   "7595032117": {
@@ -25,7 +25,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits3'),
     favoritedCount: document.getElementById('placeFavorites3'),
     playing: document.getElementById('playerCount3'),
-    url: "https://www.roblox.com/games/101594057349002/True-or-False",
+    icon: document.getElementById('gameIcon3'),
   },
 
   "3688802054": {
@@ -33,7 +33,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits4'),
     favoritedCount: document.getElementById('placeFavorites4'),
     playing: document.getElementById('playerCount4'),
-    url: "https://www.roblox.com/games/10018650748/Tennis-Serve-Simulator",
+    icon: document.getElementById('gameIcon4'),
   }
 }
 
@@ -64,9 +64,8 @@ async function updatePlayerCountNew() {
     if (gameLabels.hasOwnProperty(gameId)) {
       const labels = gameLabels[gameId];
 
-      // Show loading for each stat
       for (const key in labels) {
-        if (labels.hasOwnProperty(key) && key !== "url") {
+        if (labels.hasOwnProperty(key) && key !== "icon") {
           labels[key].textContent = "Loading...";
         }
       }
@@ -75,12 +74,18 @@ async function updatePlayerCountNew() {
         const response = await fetch(`https://games.roproxy.com/v1/games?universeIds=${gameId}`);
         const data = await response.json();
 
+        const thumbResponse = await fetch(`https://thumbnails.roproxy.com/v1/games/icons?universeIds=${gameId}&size=512x512&format=Png`)
+        const thumbData = await thumbResponse.json()
+
         for (const key in labels) {
-          if (labels.hasOwnProperty(key) && key !== "url") {
+          if (labels.hasOwnProperty(key)) {
+            if (key === "icon") continue;
+
             if (key === "name") {
               labels.name.textContent = data.data[0].name;
-              labels.name.href = labels.url;
+              labels.name.href = `https://www.roblox.com/games/${data.data[0].rootPlaceId}`;
               labels.name.target = "_blank"; // open link in new tab
+              labels.icon.src = thumbData.data[0].imageUrl;
             } else {
               let val = data.data[0][key];
               if (val === undefined || val === null) val = 0;
@@ -104,5 +109,4 @@ async function updatePlayerCountNew() {
 
 refreshButton.addEventListener('click', updatePlayerCountNew);
 
-// Run once on load
 updatePlayerCountNew();
