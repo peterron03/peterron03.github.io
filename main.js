@@ -9,6 +9,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits'),
     favoritedCount: document.getElementById('placeFavorites'),
     playing: document.getElementById('playerCount'),
+    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
   },
 
   "7254273783": {
@@ -16,6 +17,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits2'),
     favoritedCount: document.getElementById('placeFavorites2'),
     playing: document.getElementById('playerCount2'),
+    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
   },
 
   "7595032117": {
@@ -23,6 +25,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits3'),
     favoritedCount: document.getElementById('placeFavorites3'),
     playing: document.getElementById('playerCount3'),
+    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
   },
 
   "3688802054": {
@@ -30,6 +33,7 @@ const gameLabels = {
     visits: document.getElementById('placeVisits4'),
     favoritedCount: document.getElementById('placeFavorites4'),
     playing: document.getElementById('playerCount4'),
+    url: "https://www.roblox.com/games/80342862330041/Liars-Table",
   }
 }
 
@@ -71,7 +75,9 @@ async function updatePlayerCountNew() {
         const data = await response.json();
   
         for (const key in labels) {
-          if (labels.hasOwnProperty(key)) {
+          if (key == "url") {
+            labels.name.href = labels.url;
+          } else if (labels.hasOwnProperty(key)) {
             labels[key].textContent = `${addCommas(data.data[0][key])} ${labelNames[key]}`;
 
             if (combinedStats.hasOwnProperty(key)) {
