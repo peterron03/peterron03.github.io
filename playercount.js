@@ -14,3 +14,5 @@ async function updatePlayerCount() {
 }
 
 refreshButton.addEventListener('click', updatePlayerCount);
+
+updatePlayerCount();
