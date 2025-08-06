@@ -1,5 +1,5 @@
-const button = document.querySelector('input');
-const paragraph = document.querySelector('p');
+const button = document.querySelector('switchButton');
+const paragraph = document.querySelector('buttonText');
 
 button.addEventListener('click', updateButton);
 
