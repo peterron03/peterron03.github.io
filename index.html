@@ -1,6 +1,7 @@
 <html>
   <head>
-    <title>TheAlmightyForehead</title>
+    <title>Let's Make Games</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
     <style>
       body {
         margin: 0;
@@ -17,14 +18,30 @@
         font-family: Arial, sans-serif;
         padding-left: 20px;
       }
+      /* Bigger buttons */
+      #refreshButton, #switchButton {
+        width: 200px;
+        height: 60px;
+        font-size: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        transition: background-color 0.3s ease;
+      }
+      #refreshButton:hover, #switchButton:hover {
+        background-color: rgba(0,0,0,0.8);
+      }
     </style>
   </head>
   
   <body>
-    <h1>testing lol</h1>
-    <h2>if things aren't working don't blame me idk what I'm doing ngl</h2>
+    <h1>Let's Make Games</h1>
+    <p>if things aren't working don't blame me idk what I'm doing ngl</p>
 
-    <h1>Roblox Live Player Count</h1>
+    <h2>Liar's Table Player Count</h2>
     <p id="playerCount">Current players: (click button)</p>
     <button id="refreshButton">Refresh Player Count</button>
 
