@@ -15,6 +15,20 @@ const gameLabels = {
     visits: document.getElementById('placeVisits2'),
     favoritedCount: document.getElementById('placeFavorites2'),
     playing: document.getElementById('playerCount2'),
+  },
+
+  "7595032117": {
+    name: document.getElementById('gameName2'),
+    visits: document.getElementById('placeVisits2'),
+    favoritedCount: document.getElementById('placeFavorites2'),
+    playing: document.getElementById('playerCount2'),
+  },
+
+  "3688802054": {
+    name: document.getElementById('gameName2'),
+    visits: document.getElementById('placeVisits2'),
+    favoritedCount: document.getElementById('placeFavorites2'),
+    playing: document.getElementById('playerCount2'),
   }
 }
 
