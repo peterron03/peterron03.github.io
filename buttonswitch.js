@@ -1,14 +1,12 @@
 const button = document.getElementById('switchButton');
 const paragraph = document.getElementById('buttonText');
 
-button.addEventListener('click', updateButton);
+// Initialize display
+let status = Number(localStorage.getItem("buttonClicks1")) || 0;
+paragraph.textContent = `The Button has been clicked ${status} times`;
 
-function updateButton() {
-  if (button.textContent  === 'Turn On') {
-    button.textContent  = 'Turn Off';
-    paragraph.textContent = 'The button is ON!';
-  } else {
-    button.textContent  = 'Turn On';
-    paragraph.textContent = 'The button is OFF.';
-  }
-}
+button.addEventListener('click', () => {
+  status += 1;
+  localStorage.setItem("buttonClicks1", status);
+  paragraph.textContent = `The Button has been clicked ${status} times`;
+});
