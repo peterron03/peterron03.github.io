@@ -1,105 +1,131 @@
-<html>
-  <head>
-    <title>Let's Make Games</title>
-    <link rel="icon" href="bigger_rocket.png" type="image/png" />
-    <style>
-      body {
-        margin: 0;
-        padding-top: 10px;
-        height: 100vh;
-        background-image: url('https://cdn.discordapp.com/attachments/1362827246397821050/1371629425472307210/LMG_Rocket_Ship_Launch_V12.gif?ex=6893e472&is=689292f2&hm=c8e709e778d8442dd223525c014e46124a011df038ca4211ff289ddadb5b2ef8&');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-      }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Let's Make Games</title>
+  <link rel="icon" href="bigger_rocket.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url('https://cdn.discordapp.com/attachments/1362827246397821050/1371629425472307210/LMG_Rocket_Ship_Launch_V12.gif?ex=6893e472&is=689292f2&hm=c8e709e778d8442dd223525c014e46124a011df038ca4211ff289ddadb5b2ef8&');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      color: white;
+    }
 
-      /* Dark overlay */
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 0;
-        pointer-events: none;
-      }
+    /* Dark overlay over GIF */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.76);
+      z-index: -1;
+    }
 
-      body > * {
-        position: relative;
-        color: white;
-        text-shadow: 1px 1px 4px black;
-        font-family: Arial, sans-serif;
-        padding-left: 20px;
-        z-index: 1;
-      }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-      /* Bigger buttons with extra left padding inside and margin outside */
-      #refreshButton, #switchButton {
-        width: 200px;
-        height: 60px;
-        font-size: 20px;
-        padding: 10px 20px 10px 40px;
-        margin-left: 10px;
-        cursor: pointer;
-        border: none;
-        border-radius: 8px;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
-        transition: background-color 0.3s ease;
-      }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
 
-      #refreshButton:hover, #switchButton:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-      }
+    .totals {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+    }
 
-      /* Links inside headings should look like normal text */
-      h2 a {
-        color: inherit;
-        text-decoration: none;
-      }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-bottom: 30px;
+    }
 
-      h2 a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
+    button:hover {
+      background-color: #218838;
+    }
 
-  <body>
+    .game {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .game h2 {
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+
+    .game a {
+      color: #66ccff;
+      text-decoration: none;
+    }
+
+    .game a:hover {
+      text-decoration: underline;
+    }
+
+    .stat {
+      font-size: 1em;
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
     <h1>Let's Make Games</h1>
-    <h2>we make games and stuff</h2>
-    <h5 id="combinedPlayerCount">Players</h5>
-    <h5 id="combinedPlaceVisits">Visits</h5>
-    <h5 id="combinedPlaceFavorites">Favorites</h5>
 
-    <h2 id="gameName"><a href="#" target="_blank"></a></h2>
-    <p id="playerCount">Players</p>
-    <p id="placeVisits">Visits</p>
-    <p id="placeFavorites">Favorites</p>
-
-    <h2 id="gameName2"><a href="#" target="_blank"></a></h2>
-    <p id="playerCount2">Players</p>
-    <p id="placeVisits2">Visits</p>
-    <p id="placeFavorites2">Favorites</p>
-
-    <h2 id="gameName3"><a href="#" target="_blank"></a></h2>
-    <p id="playerCount3">Players</p>
-    <p id="placeVisits3">Visits</p>
-    <p id="placeFavorites3">Favorites</p>
-
-    <h2 id="gameName4"><a href="#" target="_blank"></a></h2>
-    <p id="playerCount4">Players</p>
-    <p id="placeVisits4">Visits</p>
-    <p id="placeFavorites4">Favorites</p>
+    <div class="totals">
+      <p id="combinedPlayerCount">Combined Players: Loading...</p>
+      <p id="combinedPlaceVisits">Combined Visits: Loading...</p>
+      <p id="combinedPlaceFavorites">Combined Favorites: Loading...</p>
+    </div>
 
     <button id="refreshButton">Refresh</button>
 
-    <p id="buttonText">The button is OFF.</p>
-    <button id="switchButton">Turn On</button>
+    <div class="game">
+      <h2 id="gameName"><a href="#">Loading...</a></h2>
+      <p class="stat" id="playerCount">Players: Loading...</p>
+      <p class="stat" id="placeVisits">Visits: Loading...</p>
+      <p class="stat" id="placeFavorites">Favorites: Loading...</p>
+    </div>
 
-    <script src="main.js"></script>
-    <script src="buttonswitch.js"></script>
-  </body>
+    <div class="game">
+      <h2 id="gameName2"><a href="#">Loading...</a></h2>
+      <p class="stat" id="playerCount2">Players: Loading...</p>
+      <p class="stat" id="placeVisits2">Visits: Loading...</p>
+      <p class="stat" id="placeFavorites2">Favorites: Loading...</p>
+    </div>
+
+    <div class="game">
+      <h2 id="gameName3"><a href="#">Loading...</a></h2>
+      <p class="stat" id="playerCount3">Players: Loading...</p>
+      <p class="stat" id="placeVisits3">Visits: Loading...</p>
+      <p class="stat" id="placeFavorites3">Favorites: Loading...</p>
+    </div>
+
+    <div class="game">
+      <h2 id="gameName4"><a href="#">Loading...</a></h2>
+      <p class="stat" id="playerCount4">Players: Loading...</p>
+      <p class="stat" id="placeVisits4">Visits: Loading...</p>
+      <p class="stat" id="placeFavorites4">Favorites: Loading...</p>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
 </html>
