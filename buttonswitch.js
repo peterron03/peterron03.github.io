@@ -4,11 +4,11 @@ const paragraph = document.getElementById('buttonText');
 button.addEventListener('click', updateButton);
 
 function updateButton() {
-  if (button.value === 'Turn On') {
-    button.value = 'Turn Off';
+  if (button.textContent  === 'Turn On') {
+    button.textContent  = 'Turn Off';
     paragraph.textContent = 'The button is ON!';
   } else {
-    button.value = 'Turn On';
+    button.textContent  = 'Turn On';
     paragraph.textContent = 'The button is OFF.';
   }
 }
