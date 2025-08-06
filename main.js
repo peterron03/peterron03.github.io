@@ -71,7 +71,7 @@ async function updatePlayerCountNew() {
   
         for (const key in labels) {
           if (labels.hasOwnProperty(key)) {
-            labels[key].textContent = `${addCommas(Number(data.data[0][key]))} ${labelNames[key]}`;
+            labels[key].textContent = `${addCommas(data.data[0][key])} ${labelNames[key]}`;
 
             if (combinedStats.hasOwnProperty(key)) {
               combinedStats[key] += Number(data.data[0][key]);
