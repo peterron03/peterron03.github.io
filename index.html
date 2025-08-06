@@ -22,7 +22,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5); /* Adjust opacity here */
+        background: rgba(0, 0, 0, 0.5);
         z-index: 0;
         pointer-events: none;
       }
@@ -54,32 +54,42 @@
       #refreshButton:hover, #switchButton:hover {
         background-color: rgba(0, 0, 0, 0.8);
       }
+
+      /* Links inside headings should look like normal text */
+      h2 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h2 a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
-  
+
   <body>
     <h1>Let's Make Games</h1>
     <h2>we make games and stuff</h2>
     <h5 id="combinedPlayerCount">Players</h5>
     <h5 id="combinedPlaceVisits">Visits</h5>
     <h5 id="combinedPlaceFavorites">Favorites</h5>
-    
-    <h2 id="gameName">Game Name</h2>
+
+    <h2 id="gameName"><a href="#" target="_blank"></a></h2>
     <p id="playerCount">Players</p>
     <p id="placeVisits">Visits</p>
     <p id="placeFavorites">Favorites</p>
 
-    <h2 id="gameName2">Game Name</h2>
+    <h2 id="gameName2"><a href="#" target="_blank"></a></h2>
     <p id="playerCount2">Players</p>
     <p id="placeVisits2">Visits</p>
     <p id="placeFavorites2">Favorites</p>
 
-    <h2 id="gameName3">Game Name</h2>
+    <h2 id="gameName3"><a href="#" target="_blank"></a></h2>
     <p id="playerCount3">Players</p>
     <p id="placeVisits3">Visits</p>
     <p id="placeFavorites3">Favorites</p>
 
-    <h2 id="gameName4">Game Name</h2>
+    <h2 id="gameName4"><a href="#" target="_blank"></a></h2>
     <p id="playerCount4">Players</p>
     <p id="placeVisits4">Visits</p>
     <p id="placeFavorites4">Favorites</p>
