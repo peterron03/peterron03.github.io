@@ -9,7 +9,7 @@ async function updatePlayerCount() {
     const count = data.data[0].playing;
     playerCountText.textContent = `Current players: ${count}`;
   } catch (error) {
-    playerCountText.textContent = 'Error loading player count.';
+    playerCountText.textContent = error;
     console.error(error);
   }
 }
