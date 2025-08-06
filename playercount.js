@@ -15,11 +15,11 @@ async function updatePlayerCount() {
     const gameName = data.data[0].name;
     const visits = data.data[0].visits;
     const favorites = data.data[0].favoritedCount;
-    const count = data.data[0].playing;
+    const playerCount = data.data[0].playing;
     gameNameText.textContent = gameName;
-    playerCountText.textContent = `${count} players`;
-    visitsText.textContent = `${count} visits`;
-    favoritesText.textContent = `${count} favorites`;
+    playerCountText.textContent = `${playerCount} players`;
+    visitsText.textContent = `${visits} visits`;
+    favoritesText.textContent = `${favorites} favorites`;
   } catch (error) {
     playerCountText.textContent = `Error: ${error.message}`;
     console.error(error);
