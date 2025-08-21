@@ -45,8 +45,26 @@ button {
   margin-bottom: 30px;
 }
 
+.header-link {
+  color: white;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: lightgray; /* Optional hover effect */
+}
+
 button:hover {
   background-color: #218838;
+}
+
+.totals-link {
+  color: #afe3ff;
+  text-decoration: none;
+}
+
+.totals-link:hover {
+  text-decoration: underline;
 }
 
 .game {
