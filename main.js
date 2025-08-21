@@ -1,6 +1,8 @@
 const combinedVisits = document.getElementById('combinedPlaceVisits');
 const combinedFavorites = document.getElementById('combinedPlaceFavorites');
 const combinedPlayers = document.getElementById('combinedPlayerCount');
+const discordMembers = document.getElementById(`discordMemberCount`);
+const groupMembers = document.getElementById('groupMemberCount');
 const refreshButton = document.getElementById('refreshButton');
 const loadingScreen = document.getElementById('loadingScreen');
 
@@ -38,6 +40,9 @@ const gameLabels = {
   }
 }
 
+const groupId = 4620969
+const discordInvite = "letsmakegames"
+
 const labelNames = {
   name: "",
   visits: "visits",
@@ -58,6 +63,8 @@ async function updatePlayerCountNew() {
   combinedVisits.textContent = "Loading...";
   combinedFavorites.textContent = "Loading...";
   combinedPlayers.textContent = "Loading...";
+  groupMembers.textContent = "Loading..."
+  discordMembers.textContent = "Loading..."
 
   let combinedStats = {
     visits: 0,
@@ -110,6 +117,14 @@ async function updatePlayerCountNew() {
   combinedVisits.textContent = `${addCommas(combinedStats.visits)} visits`;
   combinedFavorites.textContent = `${addCommas(combinedStats.favoritedCount)} favorites`;
   combinedPlayers.textContent = `${addCommas(combinedStats.playing)} players`;
+
+  const groupResponse = await fetch(`https://groups.roproxy.com/v1/groups/${groupId}`);
+  const groupData = await groupResponse.json();
+  const discordResponse = await fetch(`https://discord.com/api/v9/invites/${discordInvite}?with_counts=true&with_expiration=true`);
+  const discordData = await discordResponse.json();
+
+  groupMembers.textContent = `${addCommas(groupData.memberCount)} robloxians`;
+  discordMembers.textContent = `${addCommas(discordData.approximate_member_count)} discordians`;
 
   await sleep(500);
 
