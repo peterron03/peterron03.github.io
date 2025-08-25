@@ -45,15 +45,6 @@ button {
   margin-bottom: 30px;
 }
 
-.header-link {
-  color: white;
-  text-decoration: none;
-}
-
-.header-link:hover {
-  color: lightgray; /* Optional hover effect */
-}
-
 button:hover {
   background-color: #218838;
 }
@@ -67,12 +58,22 @@ button:hover {
   text-decoration: underline;
 }
 
+.games-list {
+  margin-bottom: 20px;
+}
+
 .game {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 20px;
   text-align: left;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.game:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .game-header {
@@ -132,4 +133,16 @@ button:hover {
   0% { opacity: 0.3; }
   50% { opacity: 1; }
   100% { opacity: 0.3; }
+}
+
+@media (max-width: 600px) {
+  .game-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .game-icon {
+    width: 64px;
+    height: 64px;
+  }
 }
