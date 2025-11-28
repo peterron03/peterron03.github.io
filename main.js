@@ -87,7 +87,7 @@ async function updatePlayerCountNew() {
     }
 
     try {
-      const response = await fetch(`https://games.roproxy.com/v1/games?universeIds=${gameId}`);
+      const response = await fetch(`https://games.roblox.com/v1/games?universeIds=${gameId}`);
       const data = await response.json();
 
       if (!data.data || !data.data[0]) {
@@ -99,7 +99,7 @@ async function updatePlayerCountNew() {
 
       // Thumbnail
       const thumbResponse = await fetch(
-        `https://thumbnails.roproxy.com/v1/games/icons?universeIds=${gameId}&size=512x512&format=Png`
+        `https://thumbnails.roblox.com/v1/games/icons?universeIds=${gameId}&size=512x512&format=Png`
       );
       const thumbData = await thumbResponse.json();
 
