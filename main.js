@@ -7,7 +7,7 @@ const refreshButton = document.getElementById('refreshButton');
 const loadingScreen = document.getElementById('loadingScreen');
 
 const gameLabels = {
-  "6691764291": {
+  "8936156714": {
     name: document.querySelector('#gameName a'),
     visits: document.getElementById('placeVisits'),
     favoritedCount: document.getElementById('placeFavorites'),
